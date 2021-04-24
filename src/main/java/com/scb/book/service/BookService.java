@@ -33,7 +33,6 @@ public class BookService {
             if (!recommendIdList.isEmpty()) {
                 for (BookDetailResponse bookDetailResponse : bookDetailResponseList) {
                     if (recommendIdList.contains(bookDetailResponse.getId())) {
-                        log.info(" id {}" , bookDetailResponse.getId());
                         bookDetailResponse.setIsRecommended(Boolean.TRUE);
                     }
 
@@ -51,6 +50,5 @@ public class BookService {
 
         return bookDetailResponseList;
     }
-
 
 }

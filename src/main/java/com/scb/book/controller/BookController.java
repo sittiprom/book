@@ -21,7 +21,7 @@ public class BookController {
     @GetMapping("/books")
     public ResponseEntity<List<BookDetailResponse>> getBookList() {
         List<BookDetailResponse> bookList = bookService.getBookList();
-        if(!bookList.isEmpty()){
+        if(bookList != null && !bookList.isEmpty()){
             return ResponseEntity.ok(bookList);
         } else {
             return ResponseEntity.notFound().build();
