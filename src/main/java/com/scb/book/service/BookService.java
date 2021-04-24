@@ -30,7 +30,7 @@ public class BookService {
             List<String> recommendIdList = bookRecommendList.stream()
                     .map(BookDetailResponse::getId).collect(Collectors.toList());
 
-            if (!recommendIdList.isEmpty()) {
+            if (recommendIdList != null && !recommendIdList.isEmpty()) {
                 for (BookDetailResponse bookDetailResponse : bookDetailResponseList) {
                     if (recommendIdList.contains(bookDetailResponse.getId())) {
                         bookDetailResponse.setIsRecommended(Boolean.TRUE);
