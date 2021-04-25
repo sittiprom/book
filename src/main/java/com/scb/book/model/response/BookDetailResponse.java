@@ -15,5 +15,5 @@ public class BookDetailResponse {
     private String id;
     private Boolean isRecommended = Boolean.FALSE;
 
-
 }
+
