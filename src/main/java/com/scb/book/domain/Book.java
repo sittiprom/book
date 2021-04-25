@@ -9,6 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 
@@ -25,6 +26,6 @@ public class Book implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Set<OrderBookDetail> orderBookDetails;
+    private List<OrderBookDetail> orderBookDetails;
 
 }

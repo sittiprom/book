@@ -8,10 +8,12 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Data
+@Table(name="order_book")
 public class OrderBook implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +26,6 @@ public class OrderBook implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Set<OrderBookDetail> orderBookDetail;
+    private List<OrderBookDetail> orderBookDetail;
 
 }

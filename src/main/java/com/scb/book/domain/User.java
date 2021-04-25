@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,10 +21,9 @@ public class User implements Serializable {
     private String name;
     private String surname;
     private String dateOfBirth;
-    @OneToMany(mappedBy = "user")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Set<OrderBook> orderBooks;
+    private List<OrderBook> orderBooks;
 
 }
