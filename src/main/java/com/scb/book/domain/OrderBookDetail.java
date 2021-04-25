@@ -17,7 +17,5 @@ public class OrderBookDetail implements Serializable {
     @ManyToOne
     @JoinColumn(name="book_id", referencedColumnName = "id",nullable = false)
     private Book book;
-    private Integer item;
-
 
 }

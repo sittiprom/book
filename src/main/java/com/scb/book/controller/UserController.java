@@ -1,12 +1,13 @@
 package com.scb.book.controller;
 
+import com.scb.book.domain.User;
 import com.scb.book.model.response.UserResponse;
 import com.scb.book.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class UserController {
@@ -31,4 +32,21 @@ public class UserController {
         }
 
     }
+
+    @PostMapping(value = "/user")
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody User user) {
+        try{
+            UserResponse newUser = userService.saveUser(user);
+            if(newUser !=null && user.getId() != null){
+                return ResponseEntity.ok(newUser);
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .build();
+        }
+
+    }
+
 }
