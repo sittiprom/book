@@ -18,8 +18,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-
 @RestController
 public class UserController {
     private final UserService userService;
@@ -95,10 +93,10 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/user/{userName}", method = DELETE)
+    @DeleteMapping(value = "/user/{userName}")
     public ResponseEntity<String> deleteUser(@PathVariable String userName) {
            Boolean isSuccess = userService.deleteUser(userName);
-           if(isSuccess){
+           if(Boolean.TRUE.equals(isSuccess)){
                return ResponseEntity.ok().body("success");
            } else {
                return ResponseEntity.ok().body("failed");
