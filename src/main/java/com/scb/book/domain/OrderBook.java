@@ -9,7 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Data
@@ -22,7 +22,7 @@ public class OrderBook implements Serializable {
     @JoinColumn(name="user_id", referencedColumnName = "id",nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "orderBook")
+    @OneToMany(mappedBy = "orderBook",orphanRemoval=true)
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore

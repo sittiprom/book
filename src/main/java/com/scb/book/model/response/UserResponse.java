@@ -5,7 +5,6 @@ import com.scb.book.domain.User;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -14,8 +13,9 @@ public class UserResponse {
     private String surname;
     private String dateOfBirth;
     private List<Integer> books;
+    private String errorMsg;
 
-    public UserResponse(User user, List books) {
+    public UserResponse(User user, List<Integer> books) {
         this.name = user.getName();
         this.surname = user.getSurname();
         this.dateOfBirth = user.getDateOfBirth();
