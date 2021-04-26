@@ -30,17 +30,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/books").permitAll()
                 .antMatchers(HttpMethod.POST,"/user").permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/user/order").authenticated()
                 .anyRequest()
                 .authenticated().and()
                 .formLogin();
-    }
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
-    }
 
-
+    }
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
