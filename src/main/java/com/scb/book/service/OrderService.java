@@ -4,7 +4,7 @@ import com.scb.book.domain.Book;
 import com.scb.book.domain.OrderBook;
 import com.scb.book.domain.OrderBookDetail;
 import com.scb.book.domain.User;
-import com.scb.book.model.response.request.OrderRequest;
+import com.scb.book.model.request.OrderRequest;
 import com.scb.book.repository.BookRepository;
 import com.scb.book.repository.OrderBookDetailRepository;
 import com.scb.book.repository.OrderBookRepository;

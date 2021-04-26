@@ -2,10 +2,11 @@ package com.scb.book.controller;
 
 import com.scb.book.domain.Book;
 import com.scb.book.domain.User;
+import com.scb.book.model.request.OrderRequest;
+import com.scb.book.model.request.UserRequest;
 import com.scb.book.model.response.OrderResponse;
 import com.scb.book.model.response.UserResponse;
-import com.scb.book.model.response.request.OrderRequest;
-import com.scb.book.model.response.request.UserRequest;
+
 import com.scb.book.repository.BookRepository;
 import com.scb.book.repository.UserRepository;
 import com.scb.book.service.OrderService;

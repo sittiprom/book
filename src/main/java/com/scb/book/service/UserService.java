@@ -1,14 +1,18 @@
 package com.scb.book.service;
 
+import com.scb.book.config.PasswordEncoder;
 import com.scb.book.domain.OrderBook;
 import com.scb.book.domain.User;
 import com.scb.book.model.response.UserResponse;
-import com.scb.book.model.response.request.UserRequest;
+import com.scb.book.model.request.UserRequest;
 import com.scb.book.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +23,10 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     Logger logger = LogManager.getLogger(UserService.class);
+    BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder(10, new SecureRandom());
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -63,7 +71,7 @@ public class UserService {
         User user = new User();
         try {
             user.setUserName(userRequest.getUserName());
-            user.setPassword(userRequest.getPassword());
+            user.setPassword(encoder.encode(userRequest.getPassword()));
             user.setName(userRequest.getName());
             user.setSurname(userRequest.getSurname());
             user.setDateOfBirth(userRequest.getDateOfBirth());

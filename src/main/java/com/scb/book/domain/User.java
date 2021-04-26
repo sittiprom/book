@@ -22,7 +22,7 @@ public class User implements Serializable {
     @NotBlank(message = "UserName is mandatory")
     private String userName;
 
-    @NotBlank(message = "password is mandatory")
+
     private String password;
 
     @NotBlank(message = "name is mandatory")

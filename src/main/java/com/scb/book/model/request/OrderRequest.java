@@ -1,4 +1,4 @@
-package com.scb.book.model.response.request;
+package com.scb.book.model.request;
 
 import lombok.Data;
 
