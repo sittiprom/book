@@ -1,7 +1,6 @@
 package com.scb.book.model.request;
 
 import lombok.Data;
-
 import java.util.List;
 
 @Data

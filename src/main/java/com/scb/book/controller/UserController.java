@@ -78,6 +78,10 @@ public class UserController {
         Optional<User> user = userRepository.findByUserName(userLogin.getUsername());
         String price = null;
         OrderResponse orderResponse = new OrderResponse();
+        if(request.getOrders() == null || request.getOrders().isEmpty()){
+            orderResponse.setError("There is no item from your order");
+            return ResponseEntity.ok().body(orderResponse);
+        }
         List<Book> books = bookRepository.findAllById(request.getOrders());
         if (!user.isPresent()) {
             orderResponse.setError("There is no user name in DB");
@@ -87,6 +91,7 @@ public class UserController {
             orderResponse.setError("There is no this booking list in DB");
             return ResponseEntity.ok().body(orderResponse);
         }
+
         price = orderService.orderBookCreation(request, user.get());
         if (!price.isEmpty()) {
             orderResponse.setPrice(price);
